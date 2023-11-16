@@ -1,0 +1,21 @@
+1. Frontend:
+
+    1) The Vue application is a form to send data to a PHP Laravel server. From Technical requirements the data should be taken from the URL, the form component will need to read the get-parameters from the URL, then fill the form fields with the data from the URL (get-parameters: /form-page-component?entity_data_name=test_1&action_type=edit&entity_id=1)
+    Since we have a requirement that we assume that entity_data_name matches what is required for the API, we will test with the test_1 value specified in the description.
+    The form should send a request to our own Laravel API. This will be a POST request for add and a PUT-request for edit according to REST. The action to submit the form will be determined dynamically based on the action_type GET parameter
+    As the app consists of only one form, there will be no routing and authorisation in the app.
+
+    Updated point after finish task: approaching the end of work on the test, I discovered that the data structure in create queries is somewhat more complicated than I originally planned (see previous paragraphs of this plan). Accordingly, the structure of the App.vue component has become significantly more complex, but I no longer had time to refactor the component, but anyway it still works within the framework of the conventions of simplicity of the project code and form logic in the common component
+
+2. Backend:
+
+
+	1) The Laravel application is a standard REST API in the Laravel ecosystem. From the Technical requirements, we may miss some security aspects, the API will not have authorisation functionality. Since I was given a specific username and password in the Technical requirements, we can specify them in the .env and system configs to send requests to the Origami API. If we have the issue to have the same authorisation for our system, it could be linked to Origami and we could use username and password of our own users to send requests to Origami, or all our system users would send requests using .env data for requests from one common Origami account (it would depend on the details of implementing the authorisation context and using Origami in our application).
+
+
+	2) In accordance with REST, our API would have POST and PUT requests to add/edit entities (e.g. POST /entities and PUT /entities/{id} ). This could be further extended to a resource API with methods on data retrieval and deletion, but this is beyond the scope of the task.
+
+
+	3) Each of the endpoints will make the appropriate request to Origami and pass the necessary data to implement the logic on their side.
+
+	Updated point after finish task: for some reason requests for update entity return a "wrong format" error even if I send requests not from my backend code but from postman directly to Origami
