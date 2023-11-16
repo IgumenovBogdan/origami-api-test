@@ -17,5 +17,3 @@
 
 
 	3) Each of the endpoints will make the appropriate request to Origami and pass the necessary data to implement the logic on their side.
-
-	Updated point after finish task: for some reason requests for update entity return a "wrong format" error even if I send requests not from my backend code but from postman directly to Origami
